@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+:root {
+  --brand-indigo: #1B0F4A;
+  --brand-plum: #7A2455;
+  --brand-orange: #F28C38;
+  --brand-amber: #FDBA4A;
+  --canvas: #FBF8F4;
+  --surface: #FFFFFF;
+  --border: #E7E1EA;
+  --border-strong: #CDC4D3;
+  --text-muted: #534E62;
+  --success: #1F7A4D;
+  --success-bg: #E8F5E9;
+  --warning: #B45309;
+  --warning-bg: #FEF3C7;
+  --danger: #B3261E;
+  --danger-bg: #FDECEA;
+
+  --font-montserrat: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --card-radius: 12px;
+  --control-radius: 8px;
+  --shadow-subtle: 0 1px 3px 0 rgba(27, 15, 74, 0.06), 0 1px 2px -1px rgba(27, 15, 74, 0.04);
+}
+
+body {
+  background-color: var(--canvas);
+  color: var(--brand-indigo);
+  font-family: var(--font-inter);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-montserrat);
+  color: var(--brand-indigo);
+}
+
+/* Accessibility: Consistent 3px focus ring with 2px white inner gap */
+:focus-visible {
+  outline: 3px solid var(--brand-indigo) !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 1rem;
+  background: var(--brand-indigo);
+  color: #FFFFFF;
+  padding: 0.75rem 1.25rem;
+  z-index: 9999;
+  border-radius: var(--control-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease-in-out;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Card and container styling */
+.railyug-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-subtle);
+}
+
+.railyug-control {
+  border-radius: var(--control-radius);
+}
+
+/* Primary CTA button (Orange fill with Indigo text as per spec) */
+.btn-cta {
+  background-color: var(--brand-orange);
+  color: var(--brand-indigo);
+  font-weight: 700;
+  border-radius: var(--control-radius);
+  padding: 0.625rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.15s ease;
+}
+.btn-cta:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+/* Primary Indigo Button */
+.btn-primary {
+  background-color: var(--brand-indigo);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: var(--control-radius);
+  padding: 0.625rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.15s ease;
+}
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+/* Secondary outline button */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--brand-indigo);
+  border: 1.5px solid var(--border);
+  font-weight: 600;
+  border-radius: var(--control-radius);
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.15s ease;
+}
+.btn-secondary:hover:not(:disabled) {
+  background-color: rgba(27, 15, 74, 0.04);
+}
+
+/* Low-bandwidth mode overrides */
+.low-bandwidth-mode {
+  --shadow-subtle: none !important;
+}
+.low-bandwidth-mode .railyug-card {
+  box-shadow: none !important;
+  border: 1px solid #777 !important;
+}
+.low-bandwidth-mode img,
+.low-bandwidth-mode .decorative-graphic {
+  display: none !important;
+}
+.low-bandwidth-mode .logo-text-fallback {
+  display: inline-block !important;
+}
+
+/* Large text accessibility mode */
+.large-text-mode {
+  font-size: 112.5% !important;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.reduced-motion-active *,
+.reduced-motion-active ::before,
+.reduced-motion-active ::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
